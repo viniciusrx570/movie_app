@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'Movie Home',
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         centerTitle: true,
       ),
@@ -41,6 +41,10 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.only(left: 28.0, right: 20.0),
           child: Column(
             children: [
+              TextField(
+                onChanged: _controller.onChanged,
+              ),
+              SizedBox(height: 15),
               Expanded(
                 child: ValueListenableBuilder<Movies?>(
                   valueListenable: _controller.movies,
