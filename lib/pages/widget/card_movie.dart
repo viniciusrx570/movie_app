@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/pages/details_page.dart';
 import 'package:movie_app/utls_api/api_utils.dart';
 
 import '../../models/movie_model.dart';
@@ -18,7 +19,6 @@ class CardList extends StatelessWidget {
           topRight: Radius.circular(10),
           topLeft: Radius.circular(10),
           bottomLeft: Radius.circular(10),
-
         ),
         color: Theme.of(context).cardColor,
       ),
@@ -30,9 +30,8 @@ class CardList extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(10),
                     topLeft: Radius.circular(10)),
-                child: Image.network(
-                  API.REQUEST_IMG(movie.posterPath),
-                height: 200),
+                child: Image.network(API.REQUEST_IMG(movie.posterPath),
+                    height: 200),
               ),
               Expanded(
                 child: Column(
@@ -46,20 +45,25 @@ class CardList extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.white,
                             overflow: TextOverflow.visible,
-                            fontSize: 20,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold),
                         softWrap: true,
                       ),
                     ),
                     SizedBox(
-                      height: 90,
+                      height: 80,
                     ),
-                    Text('Popularidade: ${movie.popularity}'),
+                    Text(
+                      'Popularidade: ${movie.popularity}',
+                      style: TextStyle(fontSize: 15),
+                    ),
                     SizedBox(
                       height: 5,
                     ),
-                    Text('Nota: ${movie.voteAverage}'),
-
+                    Text(
+                      'Nota: ${movie.voteAverage}',
+                      style: TextStyle(fontSize: 15),
+                    ),
                   ],
                 ),
               )

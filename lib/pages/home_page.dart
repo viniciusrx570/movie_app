@@ -32,34 +32,35 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           'Movie Home',
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 28.0, right: 20.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: ValueListenableBuilder<Movies?>(
-                  valueListenable: _controller.movies,
-                  builder: (context, movies, __) {
-                    return movies != null
-                        ? ListView.separated(
-                            separatorBuilder: (_, index) => Divider(
-                              color: Theme.of(context).cardColor,
-                            ),
-                            itemCount: movies.movieList.length,
-                            itemBuilder: (_, idx) =>
-                                CardList(movie: movies.movieList[idx]),
-                          )
-                        : LottieBuilder.asset('assets/lottie.json');
-                  },
-                ),
+        child: Column(
+          children: [
+            TextField(
+              onChanged: _controller.onChanged,
+            ),
+            SizedBox(height: 15),
+            Expanded(
+              child: ValueListenableBuilder<Movies?>(
+                valueListenable: _controller.movies,
+                builder: (context, movies, __) {
+                  return movies != null
+                      ? ListView.separated(
+                    separatorBuilder: (_, index) => Divider(
+                      color: Theme.of(context).cardColor,
+                    ),
+                    itemCount: movies.movieList.length,
+                    itemBuilder: (_, idx) =>
+                        CardList(movie: movies.movieList[idx]),
+                  )
+                      : LottieBuilder.asset('assets/lottie.json');
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
